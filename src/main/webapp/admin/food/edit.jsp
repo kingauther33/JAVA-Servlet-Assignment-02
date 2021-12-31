@@ -28,9 +28,9 @@
 <html lang="en">
 <head>
     <jsp:include page="/admin/include/header.jsp">
-        <jsp:param name="title" value="Edit ${food.getName()}"/>
+        <jsp:param name="title" value="Food | Edit ${food.getName()}"/>
         <jsp:param name="description" value="Admin area"/>
-        <jsp:param name="keywords" value="admin, page...."/>
+        <jsp:param name="keywords" value="admin, edit...."/>
     </jsp:include>
 </head>
 <body>

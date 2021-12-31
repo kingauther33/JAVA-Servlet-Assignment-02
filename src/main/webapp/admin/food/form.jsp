@@ -30,9 +30,9 @@
 <html lang="en">
 <head>
     <jsp:include page="/admin/include/header.jsp">
-        <jsp:param name="title" value="Food form"/>
+        <jsp:param name="title" value="Food | Form"/>
         <jsp:param name="description" value="Admin area"/>
-        <jsp:param name="keywords" value="admin, page...."/>
+        <jsp:param name="keywords" value="admin, form...."/>
     </jsp:include>
 </head>
 <body>
