@@ -45,19 +45,29 @@
 
         <jsp:include page="/admin/include/navbar.jsp"/>
 
+        <%
+            if (errors.size() > 0) {
+
+        %>
         <div class="w3-panel w3-pale-red w3-border">
             <h4>Vui lòng sửa lỗi bên dưới</h4>
             <ul>
                 <%
-                    for (Map.Entry<String, String> entry: errors.entrySet()
+                    for (Map.Entry<String, String> entry : errors.entrySet()
                     ) {
                 %>
-                <li><%=entry.getValue()%></li>
+                <li><%=entry.getValue()%>
+                </li>
                 <%
                     }
                 %>
             </ul>
         </div>
+        <%
+            }
+        %>
+
+
         <%
             if (categories.size() > 0) {
 
@@ -66,7 +76,8 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="name">Name:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+                    <input type="text" class="form-control" id="name" placeholder="Enter name" name="name"
+                           value="<%=food.getName()%>">
                     <%
                         if (errors.containsKey("name")) {
                     %>
@@ -80,6 +91,7 @@
                 <label class="control-label col-sm-2" for="description">Description:</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="description" placeholder="Enter description"
+                           value="<%=food.getDescription()%>"
                            name="description">
                 </div>
             </div>
@@ -87,13 +99,15 @@
                 <label class="control-label col-sm-2" for="thumbnail">Thumbnail:</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="thumbnail" placeholder="Enter thumbnail"
+                           value="<%=food.getThumbnail()%>"
                            name="thumbnail">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="price">Price:</label>
                 <div class="col-sm-4">
-                    <input type="number" class="form-control" id="price" placeholder="Enter price" name="price">
+                    <input type="number" class="form-control" id="price" placeholder="Enter price" name="price"
+                           value="<%=food.getPrice()%>">
                     <%
                         if (errors.containsKey("price")) {
                     %>
@@ -106,34 +120,38 @@
             <div class="form-group">
                 <label class="control-label col-sm-2">Category:</label>
                 <div class="col-sm-4">
-                    <select class="form-select" aria-label="Default select example" name="categoryId">
+                    <select class="form-select" aria-label="Default select example" name="categoryId"
+                            value="<%=food.getCategoryId()%>">
                         <%
-                            for (Category category:
-                                 categories) {
+                            for (Category category :
+                                    categories) {
                         %>
-                            <option <%=category.getId() == food.getCategoryId() ? "selected" : ""%> value="<%=category.getId()%>"><%=category.getName()%></option>
+                        <option <%=category.getId() == food.getCategoryId() ? "selected" : ""%>
+                                value="<%=category.getId()%>"><%=category.getName()%>
+                        </option>
                         <%
                             }
                         %>
                     </select>
                 </div>
             </div>
-<%--            <div class="form-group">--%>
-<%--                <label class="control-label col-sm-2" for="sellDate">Sell Date:</label>--%>
-<%--                <div class="col-sm-4">--%>
-<%--                    <input type="date" class="form-control" id="sellDate" placeholder="Enter Sell Date" name="sellDate">--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--            <div class="form-group">--%>
-<%--                <label class="control-label col-sm-2" for="editDate">Edit Date:</label>--%>
-<%--                <div class="col-sm-4">--%>
-<%--                    <input type="date" class="form-control" id="editDate" placeholder="Enter Edit Date" name="editDate">--%>
-<%--                </div>--%>
-<%--            </div>--%>
+            <%--            <div class="form-group">--%>
+            <%--                <label class="control-label col-sm-2" for="sellDate">Sell Date:</label>--%>
+            <%--                <div class="col-sm-4">--%>
+            <%--                    <input type="date" class="form-control" id="sellDate" placeholder="Enter Sell Date" name="sellDate">--%>
+            <%--                </div>--%>
+            <%--            </div>--%>
+            <%--            <div class="form-group">--%>
+            <%--                <label class="control-label col-sm-2" for="editDate">Edit Date:</label>--%>
+            <%--                <div class="col-sm-4">--%>
+            <%--                    <input type="date" class="form-control" id="editDate" placeholder="Enter Edit Date" name="editDate">--%>
+            <%--                </div>--%>
+            <%--            </div>--%>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="status">Status:</label>
                 <div class="col-sm-4">
-                    <input type="number" class="form-control" id="status" placeholder="Enter Status" name="status">
+                    <input type="number" class="form-control" id="status" value="<%=food.getStatus()%>"
+                           placeholder="Enter Status" name="status">
                 </div>
             </div>
             <div class="form-group">
@@ -144,7 +162,7 @@
         </form>
 
         <%
-            } else {
+        } else {
 
         %>
         <p class="text-center text-danger">PLEASE ADD NEW CATEGORY</p>

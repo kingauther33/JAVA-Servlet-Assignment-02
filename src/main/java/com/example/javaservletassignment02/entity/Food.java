@@ -164,12 +164,12 @@ public class Food {
     public HashMap<String, String> getErrors() {
         HashMap<String, String> errors = new HashMap<>();
         if (name == null || name.length() == 0) {
-            errors.put("name", "Vui lòng nhập tên sản phẩm");
+            errors.put("name", "Vui lòng nhập tên thức ăn");
         } else if (name.length() <= 7) {
-            errors.put("name", "Vui lòng nhập tên sản phẩm với ít nhất 7 kí tự");
+            errors.put("name", "Vui lòng nhập tên thức ăn với ít nhất 7 kí tự");
         }
-        if (price ==  0) {
-            errors.put("price", "Giá bán phải lớn hơn 0.");
+        if (price <=  0) {
+            errors.put("price", "Giá bán phải lớn hơn 0");
         }
         return errors;
     }

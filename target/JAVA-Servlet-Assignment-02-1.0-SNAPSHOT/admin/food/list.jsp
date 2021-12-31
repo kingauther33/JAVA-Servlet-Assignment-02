@@ -25,13 +25,8 @@
     int currentPage = (Integer) request.getAttribute("page");
     int pageSize = (Integer) request.getAttribute("pageSize");
     int totalRecords = (Integer) request.getAttribute("totalRecords");
-    int totalPages = (int) (Math.ceil((double)totalRecords / pageSize));
+    int totalPages = (int) (Math.ceil((double) totalRecords / pageSize));
     request.setAttribute("totalPages", totalPages);
-    for (Category category :
-            listCategory) {
-        System.out.println(category);
-    }
-
 %>
 <!doctype html>
 <html lang="en">
@@ -83,7 +78,8 @@
                 </td>
                 <td><%=listFood.get(i).getDescription()%>
                 </td>
-                <td><img src="<%=listFood.get(i).getThumbnail()%>" alt="<%=listFood.get(i).getName()%>" width="100"/></td>
+                <td><img src="<%=listFood.get(i).getThumbnail()%>" alt="<%=listFood.get(i).getName()%>" width="100"/>
+                </td>
                 <td><%=listFood.get(i).getPrice()%>
                 </td>
                 <td><%=formatter.format(listFood.get(i).getSellDate())%>
@@ -95,7 +91,8 @@
                 <td>
                     <a href="/admin/food/detail?id=<%=listFood.get(i).getId()%>">Detail</a>&nbsp;
                     <a href="/admin/food/edit?id=<%=listFood.get(i).getId()%>">Edit</a>&nbsp;
-                    <a class="btn-delete" onclick="deleteProduct(<%=listFood.get(i).getId()%>)" href="javascript:void(0)">Delete</a>&nbsp;
+                    <a class="btn-delete" onclick="deleteProduct(<%=listFood.get(i).getId()%>)"
+                       href="javascript:void(0)">Delete</a>&nbsp;
                 </td>
             </tr>
             <%
@@ -105,6 +102,33 @@
         </table>
 
         <nav aria-label="...">
+            <div>
+                <form action="/admin/food/list" class="d-flex justify-content-end align-items-center gap-4 mb-3"
+                      method="post">
+                    <h5 class="text-secondary mb-0 me-2">Total pages: <%=totalPages%>
+                    </h5>
+                    <div class="form-group d-flex justify-content-center align-items-center gap-2 m-0">
+                        <label class="control-label" style="margin: 0" for="page">Page:</label>
+                        <div>
+                            <input type="number" min="1" max="<%=totalPages%>" step="1" class="form-control" id="page"
+                                   name="page" value="<%=currentPage%>">
+                        </div>
+                    </div>
+                    <div class="form-group d-flex justify-content-center align-items-center gap-2 m-0">
+                        <label class="control-label" style="margin: 0" for="pageSize">Page size:</label>
+                        <div>
+                            <input type="number" min="1" max="99" step="1" class="form-control" id="pageSize"
+                                   name="pageSize" value="<%=pageSize%>">
+                        </div>
+                    </div>
+                    <div class="form-group m-0">
+                        <button class="btn btn-primary">
+                            Go
+                        </button>
+                    </div>
+                </form>
+            </div>
+
             <ul class="pagination justify-content-center">
                 <li class="page-item <%=currentPage == 1 ? "disabled" : ""%>">
                     <c:choose>
@@ -112,7 +136,8 @@
                             <span class="page-link">Previous</span>
                         </c:when>
                         <c:otherwise>
-                            <a class="page-link" href="/admin/food/list?page=<%=currentPage - 1%>&pageSize=<%=pageSize%>">Previous</a>
+                            <a class="page-link"
+                               href="/admin/food/list?page=<%=currentPage - 1%>&pageSize=<%=pageSize%>">Previous</a>
                         </c:otherwise>
                     </c:choose>
                 </li>
@@ -144,7 +169,8 @@
                             <span class="page-link">Next</span>
                         </c:when>
                         <c:otherwise>
-                            <a class="page-link" href="/admin/food/list?page=<%=currentPage + 1%>&pageSize=<%=pageSize%>">Next</a>
+                            <a class="page-link"
+                               href="/admin/food/list?page=<%=currentPage + 1%>&pageSize=<%=pageSize%>">Next</a>
                         </c:otherwise>
                     </c:choose>
                 </li>

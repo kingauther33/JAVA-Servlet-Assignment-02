@@ -36,6 +36,7 @@ public class EditCategoryServlet extends HttpServlet {
             req.setCharacterEncoding("UTF-8");
             int id = Integer.parseInt(req.getParameter("id"));
             Category category = categoryJpaRepository.findById(id);
+            // CHECK nếu trong lúc sửa đã bị xóa hoặc không tìm thấy nữa
             if (category == null) {
                 resp.getWriter().println("Category is not found or has been deleted!");
             }

@@ -43,6 +43,7 @@ public class EditFoodServlet extends HttpServlet {
             req.setCharacterEncoding("UTF-8");
             int id = Integer.parseInt(req.getParameter("id"));
             Food food = foodJpaRepository.findById(id);
+            // CHECK nếu trong lúc sửa đã bị xóa hoặc không tìm thấy nữa
             if (food == null) {
                 resp.getWriter().println("Product is not found or has been deleted!");
             }

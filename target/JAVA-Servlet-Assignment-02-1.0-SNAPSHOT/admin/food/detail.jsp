@@ -110,7 +110,7 @@
         <div class="row mb-3">
             <p class="col-sm-2 font-weight-bold">Status:</p>
             <div class="col">
-                <p><%=food.getStatus()%>
+                <p><%=food.getStatus() == 1 ? "Đang bán" : food.getStatus() == 0 ? "Dừng bán" : "Không hoạt động"%>
                 </p>
             </div>
         </div>

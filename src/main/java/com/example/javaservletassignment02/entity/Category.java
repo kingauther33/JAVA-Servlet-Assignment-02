@@ -99,9 +99,6 @@ public class Category {
             errors.put("name", "Vui lòng nhập tên loại thức ăn");
         }
 
-        if (status == 0) {
-            errors.put("status", "Vui lòng nhập trạng thái cho loại thức ăn");
-        }
         return errors;
     }
 }

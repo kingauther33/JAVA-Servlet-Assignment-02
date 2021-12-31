@@ -34,4 +34,12 @@ public class ListCategoryServlet extends HttpServlet {
         req.setAttribute("totalRecords", totalRecords);
         req.getRequestDispatcher("/admin/category/list.jsp").forward(req, resp);
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int page = Integer.parseInt(req.getParameter("page"));
+        int pageSize = Integer.parseInt(req.getParameter("pageSize"));
+
+        resp.sendRedirect("/admin/category/list?page=" + page + "&pageSize=" + pageSize);
+    }
 }

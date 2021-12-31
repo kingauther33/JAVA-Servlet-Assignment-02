@@ -38,4 +38,12 @@ public class ListFoodServlet extends HttpServlet {
         req.setAttribute("totalRecords", totalRecords);
         req.getRequestDispatcher("/admin/food/list.jsp").forward(req, resp);
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int page = Integer.parseInt(req.getParameter("page"));
+        int pageSize = Integer.parseInt(req.getParameter("pageSize"));
+
+        resp.sendRedirect("/admin/food/list?page=" + page + "&pageSize=" + pageSize);
+    }
 }
